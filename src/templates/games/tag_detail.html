@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Список игр по тегу "{{ tag.title }}"</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+            {% for obj in tags.game_set.all %}
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
+                  <img height="180" class="card-img-top" src="/media/{{ obj.image }}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ obj.title }}</h5>
+                    <p class="card-text">{{ obj.genre }}</p>
+                    <a href="{{ obj.get_absolute_url }}" class="btn btn-primary">Подробнее</a>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

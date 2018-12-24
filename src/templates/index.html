@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+			<section class="container main-search">
+				<h1>Sensorama - поиск клубов виртуальной реальности в Москве</h1>
+				<form class="filter">
+					<fieldset class="platform">
+						<select class="filter-form filter-form-style">
+							<option>PS4</option>
+							<option>Oculus Rift</option>
+							<option>HTC Vive</option>
+							<option>Любая</option>
+						</select>
+					</fieldset>
+					<fieldset class="genre">
+						<select class="filter-form filter-form-style">
+							<option>Все жанры</option>
+							<option>Экшен</option>
+							<option>Шутер</option>
+							<option>Гонки</option>
+							<option>Приключения</option>
+							<option>Спорт</option>
+						</select>
+					</fieldset>
+					<input class="filter-form search" type="search" placeholder="Название игры ...">
+				</form>
+				<input class="button" type="submit" value="Начать поиск">
+			</section>
+			
+			<section class="container best-games">
+				<h3>Лучшие игры</h3>
+				<div class="game-list">
+                    {% for obj in games_list %}
+					<div class="list-item">
+						<img src="media/{{ obj.image }}" width="261" height="150" alt="{{ obj.title }}">
+						<div class="game-info">
+							<a href="game.html">
+							<p class="club-title">
+								{{ obj.title }}
+							</p>
+							</a>
+							<p>
+								<span class="club-address">
+									м. Курская<br>
+									Рейтинг<br>
+								</span>
+							</p>
+							<a href="#" title="Что такое Oculus Rift?">Oculus Rift CV1</a>
+							<a href="#">HTC Vive</a>
+							<a href="#">PS VR</a>
+						</div>
+					</div>
+                    {% endfor %}
+				<div class="all-tags">
+					<ul class="tags popular-tags">
+						<li><a href="#">Гонки</a></li>
+						<li><a href="#">Зомби</a></li>
+						<li><a href="#">Экшен</a></li>
+						<li><a href="#">Мультиплеер</a></li>
+					</ul>
+					<ul class="tags">
+						<li><a href="#">Все игры</a></li>
+					</ul>
+				</div>
+			</section>
+			
+			<section class="container best-clubs">
+				<h3>Лучшие клубы</h3>
+				<div class="club-list">
+					<div class="list-item">
+						<img src="img/unreal-place.png" width="261" height="150" alt="Batman: Arkham VR">
+						<div class="club-info">
+							<p class="club-title">
+								Нереальное место
+							</p>
+							<p>
+								<span class="club-address">
+									м. Курская<br>
+									Рейтинг<br>
+								</span>
+							</p>
+							<a href="#" title="Что такое Oculus Rift?">Oculus Rift CV1</a>
+							<a href="#">HTC Vive</a>
+							<a href="#">PS VR</a>
+						</div>
+						<button class="reserve-mini">ЗАБРОНИРОВАТЬ</button>
+					</div>
+					<div class="list-item">
+							<img src="img/anvio.png" width="261" height="150" alt="Batman: Arkham VR">
+						<div class="club-info">
+							<p class="club-title">
+								Нереальное место
+							</p>
+							<p>
+								<span class="club-address">
+									м. Курская<br>
+									Рейтинг<br>
+								</span>
+							</p>
+							<a href="#" title="Что такое Oculus Rift?">Oculus Rift CV1</a>
+							<a href="#">HTC Vive</a>
+							<a href="#">PS VR</a>
+						</div>
+						<button class="reserve-mini">ЗАБРОНИРОВАТЬ</button>
+					</div>
+					<div class="list-item">
+						<img src="img/vr-go.png" width="261" height="150" alt="Batman: Arkham VR">
+						<div class="club-info">
+							<p class="club-title">
+								Нереальное место
+							</p>
+							<p>
+								<span class="club-address">
+									м. Курская<br>
+									Рейтинг<br>
+								</span>
+							</p>
+							<a href="#" title="Что такое Oculus Rift?">Oculus Rift CV1</a>
+							<a href="#">HTC Vive</a>
+							<a href="#">PS VR</a>
+						</div>
+						<button class="reserve-mini">ЗАБРОНИРОВАТЬ</button>
+					</div>
+					<div class="list-item">
+						<img src="img/another-world.png" width="261" height="150" alt="Batman: Arkham VR">
+						<div class="club-info">
+							<p class="club-title">
+								Нереальное место
+							</p>
+							<p>
+								<span class="club-address">
+									м. Курская<br>
+									Рейтинг<br>
+								</span>
+							</p>
+							<a href="#" title="Что такое Oculus Rift?">Oculus Rift CV1</a>
+							<a href="#">HTC Vive</a>
+							<a href="#">PS VR</a>
+						</div>
+						<button class="reserve-mini">ЗАБРОНИРОВАТЬ</button>
+					</div>
+				</div>
+				<div class="all-tags">
+					<ul class="tags popular-tags">
+						<li><a href="#">Full Body VR</a></li>
+						<li><a href="#">Клубы рядом</a></li>
+						<li><a href="#">Новые</a></li>
+						<li><a href="#">Пять звезд</a></li>
+					</ul>
+					<ul class="tags">
+						<li><a href="#">Все клубы</a></li>
+					</ul>
+				</div>
+			</section>
+			
+			<section class="container blog">
+				<h3>Новости</h3>
+				<article class="news">
+					<h2 class="visually-hidden">Статья</h2>
+					<img src="img/news1.png" width="262" height="150" alt="Новость1">
+					<div class="news-content">
+						<p class="news-title">
+							BrainGate2 позволяет парализованным управлять планшетом
+						</p>
+						<p class="news-bait">
+							А в перспективе и не только.
+						</p>
+						<p class="news-date">
+							26.11.2018     14:26
+						</p>
+					</div>
+				</article>
+				<article class="news">
+					<h2 class="visually-hidden">Статья</h2>
+					<img src="img/news2.png" width="262" height="150" alt="Новость1">
+					<div class="news-content">
+						<p class="news-title">
+							Утечка указывает на разработку в Intel 10-ядерных процессоров
+						</p>
+						<p class="news-bait">
+							Они будут созданы по 14-нанометровой технологии
+						</p>
+						<p class="news-date">
+							26.11.2018     14:26
+						</p>
+					</div>
+				</article>
+				<article class="news">
+					<h2 class="visually-hidden">Статья</h2>
+					<img src="img/news3.png" width="262" height="150" alt="Новость1">
+					<div class="news-content">
+						<p class="news-title">
+							Razer поведала первые подробности о клавиатуре и мыши для Xbox One
+						</p>
+						<p class="news-bait">
+							Клавиатура будет механической.
+						</p>
+						<p class="news-date">
+							26.11.2018     14:26
+						</p>
+					</div>
+				</article>
+				<ul class="tags">
+					<li><a href="#">Все новости</a></li>
+				</ul>
+			</section>
+
+    {% endblock content %}

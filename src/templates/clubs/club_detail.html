@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="container">
+    <h1>{{ title }}</h1>
+</div>
+<br>
+<div class="container">
+    <h2>Описание клуба</h2>
+    <img src="/media/{{ img }}">
+    <h6>{{ desc }}</h6>
+</div>
+<br>
+<br>
+<div class="container">
+    <h2>Игры клуба</h2>
+
+  <form id="form_radio" method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for obj in filter.qs %}
+    <li>{{ obj.title }} - {{ obj.genre }} - {{ obj.num_players }} - {{ obj.platform }} - {{ obj.age_players }}</li>
+  {% endfor %}
+  </ul>
+</div>
+
+<br />
+<div class="container">
+    <div class="row">
+            {% for obj in club_games_list %}
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
+                  <img height="180" class="card-img-top" src="/media/{{ obj.image }}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ obj.title }}</h5>
+                    <p class="card-text">{{ obj.genre }}</p>
+                    <a href="{{ obj.get_absolute_url }}" class="btn btn-primary">Подробнее</a>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock content %}
