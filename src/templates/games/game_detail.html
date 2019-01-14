@@ -1,154 +1,167 @@
 {% extends 'base.html' %}
 
 {% block content %}
-			<section class="container profile-game">
-				<div class="profile-game-title">
-					<h2>{{ instance.title }}</h2>
-					<p>{{ instance.owner }}</p>
-					<p>{{ instance.year|date:"Y" }}</p>
-				</div>
-				<div class="profile-game-content">
-					<div class="profile-game-screenshots">
-						<img src="/media/{{ instance.image }}" width="750" height="421" alt="{{ instance.title }}">
-						<div class="screenshots-switch">
+            <section class="container profile-game">
+                <div class="profile-game-title">
+                    <h2>{{ instance.title }}</h2>
+                    <p>{{ instance.owner }}</p>
+                    <p>{{ instance.year|date:"Y" }}</p>
+                </div>
+                <div class="profile-game-content">
+                    <div class="profile-game-screenshots">
+                        <img src="/media/{{ instance.image }}" width="750" height="421" alt="{{ instance.title }}">
+                        <div class="screenshots-switch">
                             {% for obj in instance.gameimage_set.all %}
                             <img src="/media/{{ obj.img }}" width="144" height="81" alt="{{ obj.title }}">
                             {% endfor %}
-						</div>
-					</div>
-					<div class="profile-game-informations">
-						<img src="/media/{{ instance.image }}" width="360" height="202" alt="{{ instance.title }}">
-						<p>
-						{{ instance.desc }}
-						</p>
-						<p>
-							<span>Жанр: </span>{{ instance.genre }}<br>
-							<span>Платформа: </span>{% for obj in instance.platform.all %} {{ obj.title }} {% endfor %}<br>
-							<span>Язык интерфейса: </span>{{ instance.language }}<br>
-							<span>Язык озвучки: </span> английский<br>
-							{{ instance.num_players }}
-							{% if instance.num_players > 1 %}
-							 игрока
-							{% else %}
-							 игрок
-							{% endif %}
-						</p>
-						<ul class="tags profile-game-tags">
-                            {% for obj in instance.tags.all %}
-                                <li><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
+                        </div>
+                    </div>
+                    <div class="profile-game-informations">
+                        <img src="/media/{{ instance.image }}" width="360" height="202" alt="{{ instance.title }}">
+                        <p>
+                        {{ instance.desc }}
+                        </p>
+                        <p>
+                            <span>Жанр: </span>{{ instance.genre }}<br>
+                            <span>Платформа: </span>{% for obj in instance.platform.all %} {{ obj.title }} {% endfor %}<br>
+                            <span>Язык интерфейса: </span>{{ instance.language }}<br>
+                            <span>Язык озвучки: </span> английский<br>
+                            {{ instance.num_players }}
+                            {% if instance.num_players > 1 %}
+                             игрока
+                            {% else %}
+                             игрок
+                            {% endif %}
+                        </p>
+                        <ul class="tags profile-game-tags">
+                            {% for obj in instance.tags_taggit.all %}
+                            <li><a href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></li>
                             {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-							{% for obj in instance.tags_taggit.all %}
-							<li><a href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></li>
-							{% endfor %}
-						</ul>
-					</div>
-				</div>
-			</section>
+            <section class="container menu-profile-game">
+                <ul>
+                    <li><a href="#">Где поиграть</a></li>
+                    <li><a href="#">Отзывы</a></li>
+                </ul>
+                <hr class="footer-line">
+            </section>
 
-			<section class="container menu-profile-game">
-				<ul>
-					<li><a href="#">Где поиграть</a></li>
-					<li><a href="#">Отзывы</a></li>
-				</ul>
-				<hr class="footer-line">
-			</section>
+            <section class="container profile-game-filter">
+                <h3>Где поиграть в <span>{{ instance.title }}<span></h3>
+                <form class="profile-game-filter">
+                    <div class="filter-membrane">
+                        <div class="search-and-helmet">
+                            <fieldset class="helmet">
+                                <select class="filter-form filter-form-style">
+                                    <option>PS4</option>
+                                    <option>Oculus Rift</option>
+                                    <option>HTC Vive</option>
+                                    <option>Любая</option>
+                                </select>
+                            </fieldset>
+                            <input class="filter-form search" type="search" placeholder="Метро">
+                        </div>
+                        <fieldset>
+                            <input class="popular-map-filter" type="radio" name="popular-map-filter" id="on-popular" checked="checked">
+                            <label for="on-popular">По популярности</label>
+                            <input class="popular-map-filter" type="radio" name="popular-map-filter" id="on-map">
+                            <label for="on-map">Карта</label>
+                        </fieldset>
+                    </div>
+                    <fieldset>
+                        <input class="platform-checkbox" type="checkbox" name="ps4" id="ps4">
+                        <label for="ps4">PS VR</label>
+                        <input class="platform-checkbox" type="checkbox" name="htc" id="htc">
+                        <label for="htc">HTC Vive</label>
+                        <input class="platform-checkbox" type="checkbox" name="oculus" id="oculus">
+                        <label for="oculus">Oculus Rift CV1</label>
+                        <input class="platform-checkbox" type="checkbox" name="any-platform" id="any-platform">
+                        <label for="any-platform">Любая</label>
+                    </fieldset>
+                </form>
+            </section>
 
-			<section class="container profile-game-filter">
-				<h3>Где поиграть в <span>{{ instance.title }}<span></h3>
-				<form class="profile-game-filter">
-					<div class="filter-membrane">
-						<div class="search-and-helmet">
-							<fieldset class="helmet">
-								<select class="filter-form filter-form-style">
-									<option>PS4</option>
-									<option>Oculus Rift</option>
-									<option>HTC Vive</option>
-									<option>Любая</option>
-								</select>
-							</fieldset>
-							<input class="filter-form search" type="search" placeholder="Метро">
-						</div>
-						<fieldset>
-							<input class="popular-map-filter" type="radio" name="popular-map-filter" id="on-popular" checked="checked">
-							<label for="on-popular">По популярности</label>
-							<input class="popular-map-filter" type="radio" name="popular-map-filter" id="on-map">
-							<label for="on-map">Карта</label>
-						</fieldset>
-					</div>
-					<fieldset>
-						<input class="platform-checkbox" type="checkbox" name="ps4" id="ps4">
-						<label for="ps4">PS VR</label>
-						<input class="platform-checkbox" type="checkbox" name="htc" id="htc">
-						<label for="htc">HTC Vive</label>
-						<input class="platform-checkbox" type="checkbox" name="oculus" id="oculus">
-						<label for="oculus">Oculus Rift CV1</label>
-						<input class="platform-checkbox" type="checkbox" name="any-platform" id="any-platform">
-						<label for="any-platform">Любая</label>
-					</fieldset>
-				</form>
-			</section>
-
-			<section class="container best-clubs">
-				<div class="club-list">
+            <section class="container best-clubs">
+                <div class="club-list">
                     {% for obj in instance.club_set.all %}
-					<div class="list-item">
-						<img src="/media/{{ obj.image }}" width="261" height="150" alt="{{ obj.title }}">
-						<div class="club-info">
-							<p class="club-title">
-								{{ obj.title }}
-							</p>
-							<p>
-								<span class="club-address">
-									м. Курская<br>
-									Рейтинг<br>
-								</span>
-							</p>
-							<a href="#" title="Что такое Oculus Rift?">Oculus Rift CV1</a>
-							<a href="#">HTC Vive</a>
-							<a href="#">PS VR</a>
-						</div>
-						<button class="reserve-mini">ЗАБРОНИРОВАТЬ</button>
-					</div>
+                    <div class="list-item">
+                        <img src="/media/{{ obj.image }}" width="261" height="150" alt="{{ obj.title }}">
+                        <div class="club-info">
+                            <p class="club-title">
+                                {{ obj.title }}
+                            </p>
+                            <p>
+                                <span class="club-address">
+                                    м. Курская<br>
+                                    Рейтинг<br>
+                                </span>
+                            </p>
+                            <a href="#" title="Что такое Oculus Rift?">Oculus Rift CV1</a>
+                            <a href="#">HTC Vive</a>
+                            <a href="#">PS VR</a>
+                        </div>
+                        <button class="reserve-mini">ЗАБРОНИРОВАТЬ</button>
+                    </div>
                     {% endfor %}
-				</div>
-				<div class="all-tags">
-					<ul class="tags">
-						<li><a href="#">Еще клубы</a></li>
-					</ul>
-				</div>
-			</section>
+                </div>
+                <div class="all-tags">
+                    <ul class="tags">
+                        <li><a href="#">Еще клубы</a></li>
+                    </ul>
+                </div>
+            </section>
 
-			<section class="container reviews-section">
-				<div class="reviews-title">
-					<h3>Отзывы на <span>{{ instance.title }}</span></h3>
-					<div class="game-mark-wrapper">
+            <section class="container reviews-section">
+                <div class="reviews-title">
+                    <h3>Отзывы на <span>{{ instance.title }}</span></h3>
+                    <div class="game-mark-wrapper">
                         {% for obj in comments_sum %}
-						<p class="game-mark">{{ obj }}</p>
-						<p class="game-mark-amount">всего: {{ instance.gamecomment_set.count }}</p>
+                        <p class="game-mark">{{ obj|floatformat:"1"  }}</p>
+                        <p class="game-mark-amount">всего: {{ instance.gamecomment_set.count }}</p>
                         {% endfor %}
-					</div>
-				</div>
-				<div class="reviews">
-					<ul>
+                    </div>
+                </div>
+                <div class="reviews">
+
+                    <ul>
+                        {% if new_comment %}
+                        <h2>Комментарий добавлен.</h2>
+                        {% else %}
+                            {% if user.is_authenticated %}
+                            <h2>Добавить комментарий</h2>
+                            <form action="." method="post">
+                                {{ comment_form.as_p }}
+                                {% csrf_token %}
+                                <p><input type="submit" value="Добавить комментарий"></p>
+                            </form>
+                            {% else %}
+                            Авторизируйтесь, чтобы оставить комментарий.
+                            {% endif %}
+                        {% endif %}
+
+
                         {% for obj in instance.gamecomment_set.all %}
                             {% if obj == None %}
                                 Отзывов пока нет
                             {% else %}
-						<li>
-							<p class="reviews-name">{{ obj.user }}</p>
-							<p class="reviews-date">{{ obj.created|date:"d.m.Y" }}</p>
-							<p class="reviews-content">{{ obj.comment }}</p>
+                        <li>
+                            <p class="reviews-name">{{ obj.user }}</p>
+                            <p class="reviews-date">{{ obj.created|date:"d.m.Y" }}</p>
+                            <p class="reviews-content">{{ obj.comment }}</p>
                             Оценка: {{ obj.rating }}
-						</li>
+                        </li>
                             {% endif %}
                         {% endfor %}
-					</ul>
-				</div>
-				<div class="all-tags">
-					<ul class="tags">
-						<li><a href="#">Еще отзывы</a></li>
-					</ul>
-				</div>
-			</section>
+                    </ul>
+                </div>
+                <div class="all-tags">
+                    <ul class="tags">
+                        <li><a href="#">Еще отзывы</a></li>
+                    </ul>
+                </div>
+            </section>
 {% endblock content %}
