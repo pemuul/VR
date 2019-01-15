@@ -8,8 +8,8 @@ body {
 	background-repeat: no-repeat;
 }
 
-div {
-	
+body a {
+	text-decoration: none;
 }
 
 .container {
@@ -28,17 +28,40 @@ div {
 	line-height: 20px;
 	
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
 	
 	height: 65px;
 	
-	border-bottom: 1px solid #eaebee;
+	box-shadow: inset 0 -1px 0 0 #eaebee;
+}
+
+.main-header-logo {
+	margin-left: 10px;
+	cursor: pointer;
 }
 
 .site-navigation a,
 .user-navigation a {
+	display: block;
 	color: #1f1f22;
+	text-decoration: none;
+	margin-left: 25px;
+	padding: 0 3px 19px 3px;
+}
+
+.site-navigation a:visited,
+.user-navigation a:visited {
+	color: #1f1f22;
+}
+
+.site-navigation li .site-navigation-active {
+	color: #3071eb;
+	border-bottom: 2px solid #3071eb;
+}
+
+.site-navigation a:hover,
+.user-navigation a:hover {
+	color: #3071eb;
 }
 
 .site-navigation,
@@ -50,21 +73,19 @@ div {
 
 .site-navigation {
 	display: flex;
-	justify-content: space-between;
 	
 	width: 500px;
-	
-	margin-left: 25px;
 }
 
 .user-navigation {
 	margin-right: 25px;
+	margin-left: auto;
 }
 
 h1 {
 	font-size: 46px;
 	font-weight: 300;
-	line-height: 48px;
+	line-height: 68px;
 	
 	text-align: center;
 	
@@ -97,8 +118,11 @@ h3 {
 
 .filter {
 	display: flex;
+	height: 44px;
 	
 	margin: 40px 0;
+	
+	box-shadow: 0 2px 20px -8px #757576;
 }
 
 .filter fieldset {
@@ -108,8 +132,15 @@ h3 {
 }
 
 .filter-form {
-	height: 38px;
+	height: 44px;
 	border: 1px solid #e8eaed;
+	padding-left: 10px;
+}
+
+.filter-form-style {
+	border-right: none;
+	cursor: pointer;
+	select-color: red;
 }
 
 .button {
@@ -120,6 +151,16 @@ h3 {
 	
 	width: 156px;
 	height: 36px;
+	
+	cursor: pointer;
+}
+
+.button:hover {
+	background: linear-gradient(to top, #5e98fb, #81affe);
+}
+
+.button:active {
+	background: linear-gradient(to top, #5e98fb, #75a5f8);
 }
 
 .best-games,
@@ -138,78 +179,89 @@ h3 {
 	list-style: none;
 }
 
-.game-info {
-	padding: 20px 0 20px 10px;
-	
-	height: 100%;
-	
-	border-left: 1px solid #d4d4d4;
-	border-right: 1px solid #d4d4d4;
-	border-bottom: 1px solid #d4d4d4;
+.profile-name {
+	color: #1f1f22;
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+.profile-row {
+	color: #aeb1b6;
+	font-size: 14px;
+}
+
+.club-rating::after {
+	content: url(../img/rating.png);
+	position: relative;
+	left: 10px;
+	top: 1px;
 }
 
 .club-list {
 	display: flex;
 	justify-content: space-between;
 	
-	margin: 0;
+	margin: 0 0 15px 0;
 	padding: 0;
 	
 	list-style: none;
 }
 
-.list-item {
-	display: flex;
-	flex-direction: column;
-	
-	width: 261px;
-	height: 340px;
-	
-	margin: 0;
-	padding: 0;
-}
-
 .club-info {
-	padding: 20px 0 20px 10px;
+	padding: 20px;
 	
-	border-left: 1px solid #d4d4d4;
-	border-right: 1px solid #d4d4d4;
+	height: 110px;
+	
+	border-left: 1px solid #EBEBEB;
+	border-right: 1px solid #EBEBEB;
 }
 
-.list-item p {
-	margin: 0;
-	padding: 0;
+.club-info a:hover {
+	text-decoration: none;
 }
 
 .club-title {
 	color: #1f1f22;
 	font-size: 16px;
+	
+	text-decoration: none;
 }
 
 .club-address {
 	color: #aeb1b6;
-}
-
-.list-item a {
-	color: #aeb1b6;
-	font-weight: 300;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .reserve-mini {
 	color: #c1c1c1;
-	
 	background-color: #fff;
 	
-	border: 1px solid #d4d4d4;
+	border: 1px solid #EBEBEB;
+	border-radius: 0 0 5px 5px;
 	
+	height: 40px;
 	width: 100%;
-	height: 38px;
+	
+	cursor: pointer;
+}
+
+.reserve-mini:hover {
+	color: #fff;
+	border: 1px solid #5e98fb;
+	background: linear-gradient(to top, #5e98fb, #81affe);
+}
+
+.reserve-mini:active {
+	background: linear-gradient(to top, #5e98fb, #75a5f8);
 }
 
 .all-tags {
 	display: flex;
 	justify-content: space-between;
+}
+
+.tags a:hover {
+	text-decoration: none;
 }
 
 .tags {
@@ -231,22 +283,32 @@ h3 {
 }
 
 .news {
-	display: flex;
-	
 	width: 848px;
 	height: 150px;
 	
 	margin-bottom: 15px;
 }
 
+.news a {
+	display: flex;
+	color: #1f1f22;
+}
+
+.news:hover .news-title {
+	color: #3071eb;
+}
+
 .news-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	
 	width: 585px;
+	padding: 20px;
 	
-	padding: 0 20px;
-	
-	border-top: 1px solid #d4d4d4;
-	border-right: 1px solid #d4d4d4;
-	border-bottom: 1px solid #d4d4d4;
+	border-top: 1px solid #EBEBEB;
+	border-right: 1px solid #EBEBEB;
+	border-bottom: 1px solid #EBEBEB;
 }
 
 .news-title {
@@ -258,8 +320,19 @@ h3 {
 }
 
 .news-date {
+	display: flex;
+	justify-content: space-between;
+	
 	font-weight: 300;
 	color: #808080;
+}
+
+.news-views::before {
+	content: url(../img/views.png);
+	position: relative;
+	
+	right: 7px;
+	top: 1px;
 }
 
 .main-footer {
@@ -274,7 +347,17 @@ h3 {
 	color: #1f1f22;
 }
 
-.social-list,
+.social-list {
+	display: flex;
+	
+	margin: 0;
+	padding: 30px 0 20px 0;
+}
+
+.social-list li:not(:first-child):hover {
+	cursor: pointer;
+}
+
 .reference,
 .main-footer-info {
 	display: flex;
@@ -416,16 +499,6 @@ h3 {
 
 .search::-webkit-input-placeholder {
 	color: #c1c1c1;
-	padding-left: 10px;
-}
-
-.filter-form-style {
-	color: #1f1f22;
-	border-right: none;
-	
-	appearance: none;
-	-moz-appearance: none;
-    -webkit-appearance: none;
 }
 
 .reviews-section {
@@ -500,10 +573,67 @@ h3 {
 	width: 100%;
 }
 
+.profile-new {
+	width: 261px;
+	height: 340px;
+	position: relative;
 
+	background-color: #fff;
+}
 
+.profile-new:hover {
+	transform: scale(1.007);
+	
+	box-shadow: 0 2px 20px -8px #757576;
+}
 
+.profile-cover {
+	width: 100%;
+	height: 150px;
+	background-repeaet: no-repeat;
+	background-size: cover;
+	border-radius: 5px 5px 0 0;
+}
 
+.game-top {
+	position: absolute;
+	top: 105px;
+}
+
+.club-top {
+	position: absolute;
+	top: 125px;
+	right: 0;
+}
+
+.game-info {
+	font-size: 14px;
+	text-decoration: none;
+	height: 190px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 20px;
+	border-right: 1px solid #EBEBEB;
+	border-left: 1px solid #EBEBEB;
+	border-bottom: 1px solid #EBEBEB;
+	border-radius: 0 0 5px 5px;
+	box-sizing: border-box;
+}
+
+.game-platform ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-top: 20px;
+	
+	display: flex;
+	justify-content: flex-start;
+}
+
+.game-platform ul li {
+	margin-right: 10px;
+}
 
 
 

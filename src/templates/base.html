@@ -1,6 +1,5 @@
 {% load account %}
-{% load static %}
-
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -11,23 +10,25 @@
 		<link href="{% static 'css/normalize.css' %}" rel="stylesheet">
 		<link href="{% static 'css/style.css' %}" rel="stylesheet">
 	</head>
-
+	
 	<body>
 		<header class="main-header">
 			<nav class="main-navigation container">
+				<a class="main-header-logo">
+					<img src="{% static 'img/logo.png' %}" title="Sensorama - клубы виртулаьной реальности" width="50" height="50" alt="Sensorama">
+				</a>
 				<ul class="site-navigation">
-					<li>
-						<a class="main-header-logo">
-							<img src="#" alt="logo">
-						</a>
-					</li>
-					<li><a href="/">Главная</a></li>
+					<li><a class="site-navigation-active" href="/">Главная</a></li>
 					<li><a href="/games">Игры</a></li>
 					<li><a href="/clubs">Клубы</a></li>
 					<li><a href="#">О нас</a></li>
 				</ul>
 				<ul class="user-navigation">
+					{% if user.is_authenticated %}
+					Вы авторизированы
+					{% else %}
 					<li class="login-link"><a href="{% url 'account_login' %}">Вход</a></li>
+					{% endif %}
 				</ul>
 			</nav>
 		</header>
@@ -42,9 +43,14 @@
 				<h2 class="visually-hidden">Общая информация</h2>
 				<ul class="social-list">
 					<li>Мы в социальных сетях:</li>
+					<li><a><img src="{% static 'img/vk.png' %}" title="Вконтакте" alt=""></a></li>
+					<li><a><img src="{% static 'img/facebook.png' %}" title="Facebook" alt=""></a></li>
+					<li><a><img src="{% static 'img/twitter.png' %}" title="Twitter" alt=""></a></li>
+					<li><a><img src="{% static 'img/ok.png' %}" title="Одноклассники" alt=""></a></li>
+					<li><a><img src="{% static 'img/google.png' %}" title="Google+" alt=""></a></li>
 				</ul>
 				<hr class="footer-line">
-
+				
 				<div class="main-footer-info">
 					<ul class="info-list">
 						<li><a href="#">Подробнее о нас</a></li>
@@ -64,7 +70,7 @@
 						<li><a href="#">СМИ о нас</a></li>
 					</ul>
 				</div>
-
+				
 				<hr class="footer-line">
 				<ul class="reference">
 					<li>2018</li>
@@ -76,5 +82,5 @@
 			</section>
 		</footer>
 	</body>
-
+	
 </html>
